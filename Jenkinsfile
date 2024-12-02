@@ -25,8 +25,8 @@ pipeline {
       steps{
 //        dir ('$(env.WORKSPACE)') {
         sh """
-        docker build -t darkori66/spring-petclinic:$BUILD_NUMBER .
-        docker tag darkori66/spring-petclinic:$BUILD_NUMBER darkori66/spring-petclinic:latest
+        docker build -t darkori96/spring-petclinic:$BUILD_NUMBER .
+        docker tag darkori96/spring-petclinic:$BUILD_NUMBER darkori66/spring-petclinic:latest
         """
 //      }
       }
@@ -35,7 +35,7 @@ pipeline {
       steps{
         sh """
         echo $DOCKERHUB_CREDENTAILS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
-        docker push darkori66/spring-petclinic:latest
+        docker push darkori96/spring-petclinic:latest
         """
       }
     }
