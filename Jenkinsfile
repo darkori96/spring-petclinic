@@ -13,25 +13,5 @@ pipeline {
         git url: 'https://github.com/darkori96/spring-petclinic.git'
       }
     }
-    stage('Maven Build') {
-      steps{
-        
-      }
-    }
-    stage('Docker Image') {
-      steps{
-        
-      }
-    }
-    stage('Docker Image Push') {
-      steps{
-        
-      }
-    }
-    stage('SSH Publish') {
-      steps{
-        
-      }
-    }
   }
 }
