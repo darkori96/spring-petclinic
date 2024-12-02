@@ -3,7 +3,7 @@ pipeline {
   //JAVA와 Maven Tools 등록
   tools {
     jdk 'jdk17'
-    mven 'M3'
+    maven 'M3'
   }
 
   stages {
