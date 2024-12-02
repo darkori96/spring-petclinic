@@ -1,0 +1,37 @@
+pipeline {
+  agent any
+  //JAVA와 Maven Tools 등록
+  tools {
+    jdk 'jdk17'
+    mven 'M3'
+  }
+
+  stages {
+    //GitHub에서 소스코드 복사
+    stage('Git Clone') {
+      steps{
+        git url: 'https://github.com/darkori96/spring-petclinic.git'
+      }
+    }
+    stage('Maven Build') {
+      steps{
+        
+      }
+    }
+    stage('Docker Image') {
+      steps{
+        
+      }
+    }
+    stage('Docker Image Push') {
+      steps{
+        
+      }
+    }
+    stage('SSH Publish') {
+      steps{
+        
+      }
+    }
+  }
+}
