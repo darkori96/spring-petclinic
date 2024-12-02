@@ -5,7 +5,7 @@ pipeline {
     jdk 'jdk17'
     maven 'M3'
   }
-  enviroment {
+  environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerCredentials')
   }
 
