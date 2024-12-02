@@ -39,5 +39,13 @@ pipeline {
         """
       }
     }
+    stage('Remove Docker Image') {
+      steps{
+        sh """
+        docker rmi darkori96/spring-petclinic:$BUILD_NUMBER
+        docker rmi darkori96/spring-petclinic:latest
+        """
+      }
+    }
   }
 }
