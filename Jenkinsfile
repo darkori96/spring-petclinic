@@ -10,7 +10,7 @@ pipeline {
     //GitHub에서 소스코드 복사
     stage('Git Clone') {
       steps{
-        git url: 'https://github.com/darkori96/spring-petclinic.git'
+        git url: 'https://github.com/darkori96/spring-petclinic.git', branch: 'main'
       }
     }
   }
