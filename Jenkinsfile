@@ -47,5 +47,33 @@ pipeline {
         """
       }
     }
+    stage('Docker Container') {
+      steps{
+        sh """
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'target', 
+        transfers: [sshTransfer(cleanRemote: false, 
+        excludes: '', 
+        execCommand: '''
+        docker rm -f $(docker ps -aq)
+        docker rmi $(docker images -q)
+        docker run -d -p 80:8080 --name spring-petclinic darkori96/sdpring-petclinic:latest
+        ''',
+        export BUILD_ID=Petclinic-Pipeline
+        nohup java -jar /home/ubuntu/spring-petclinic-3.3.0-SNAPSHOT.jar >> nohup.out 2>&1 &''', 
+        execTimeout: 120000, 
+        flatten: false, 
+        makeEmptyDirs: false, 
+        noDefaultExcludes: false, 
+        patternSeparator: '[, ]+', 
+        remoteDirectory: '', 
+        remoteDirectorySDF: false, 
+        removePrefix: 'target', 
+        sourceFiles: 'target/*.jar')], 
+        usePromotionTimestamp: false, 
+        useWorkspaceInPromotion: false, 
+        verbose: false)])
+        """
+      }
+    }
   }
 }
