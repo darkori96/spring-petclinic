@@ -56,25 +56,6 @@ pipeline {
           branch: 'main'
       }
     }
-    //Maven 빌드 작업
-    stage('Maven Build') {
-      steps {
-        echo 'Maven Build'
-        sh 'mvn -Dmaven.test.failure.ignore=true clean package'
-      }
-    }
-    //Docker Image 생성
-    stage('Docker Image Build') {
-      steps {
-        echo 'Docker Image build'
-        dir("${env.WORKSPACE}") {
-        sh """
-        docker build -t darkori96/spring-petclinic:$BUILD_NUMBER .
-        docker tag darkori96/spring-petclinic:$BUILD_NUMBER darkori/spring-petclinic:latest
-        """
-        }
-      }
-    }
     //Docker Image 삭제
     stage('Remove Docker Image') {
       steps {
