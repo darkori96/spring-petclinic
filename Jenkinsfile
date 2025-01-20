@@ -37,8 +37,8 @@ pipeline {
         docker build -t darkori96/spring-petclinic:$BUILD_NUMBER .
         docker tag darkori96/spring-petclinic:$BUILD_NUMBER darkori/spring-petclinic:latest
         """
+        }
       }
-    }
     }
     //DockerHub Login
     stage('Docker Login') {
@@ -49,7 +49,6 @@ pipeline {
         """
       }
     }
-      
     stage('Git Clone') {
       steps {
         echo 'Git Clone'
@@ -73,8 +72,8 @@ pipeline {
         docker build -t darkori96/spring-petclinic:$BUILD_NUMBER .
         docker tag darkori96/spring-petclinic:$BUILD_NUMBER darkori/spring-petclinic:latest
         """
+        }
       }
-    }
     }
     //Docker Image 삭제
     stage('Remove Docker Image') {
