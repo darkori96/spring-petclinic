@@ -49,13 +49,6 @@ pipeline {
         """
       }
     }
-    stage('Git Clone') {
-      steps {
-        echo 'Git Clone'
-        git url: 'https://github.com/darkori96/spring-petclinic.git',
-          branch: 'main'
-      }
-    }
     //Docker Image 삭제
     stage('Remove Docker Image') {
       steps {
