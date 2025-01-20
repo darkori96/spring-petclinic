@@ -72,19 +72,6 @@ pipeline {
             }
         }
 
-	// Code Deploy 실행
-        stage('deploy create-deployment') {
-            steps {
-                 withAWS(region:"${REGION}", credentials: "${AWS_CREDENTIAL_NAME}"){
-                sh """ 
-                    aws deploy create-deployment \
-                        --application-name user05-deploy \
-                        --deployment-config-name CodeDeployDefault.OneAtATime \
-                        --deployment-group-name user05-deploy-group \
-                        --s3-location bucket=user05-bucket,bundleType=zip,key=deploy.zip
-                   """
-                 }
-            }
-        }
+
   }
 }
